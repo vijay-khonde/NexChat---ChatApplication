@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "axios": "^1.18.1",
     "dotgitignore": "^2.1.0"
   }
 }

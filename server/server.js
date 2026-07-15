@@ -1,12 +1,14 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./db/db");
-
-dotenv.config();
+const authRoutes = require("./routes/auth.routes");
+const userRoutes = require("./routes/Users.routes");
 
 const app = express();
 
 app.use(express.json());
+const cors = require("cors");
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 
 // Home route
 app.get("/", (req, res) => {
@@ -14,8 +16,9 @@ app.get("/", (req, res) => {
 });
 
 // Auth routes
-app.use("/chatApp/auth", require("./routes/auth.routes"));
-
+app.use("/chatApp/auth", authRoutes);
+console.log("User routes loaded");
+app.use("/chatApp/users", userRoutes);
 const PORT = process.env.PORT || 3000;
 
 const startServer = async () => {
