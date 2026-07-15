@@ -17,5 +17,4 @@ dist/
 build/
 
 # IDE settings
-.vscode/
 .idea/
